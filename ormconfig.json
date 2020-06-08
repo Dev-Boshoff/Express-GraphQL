@@ -1,9 +1,9 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "35.242.176.105",
    "port": 5432,
    "username": "postgres",
-   "password": "postgres",
+   "password": "maptrendsdata123",
    "database": "map-trends-local",
    "synchronize": true,
    "logging": false,
