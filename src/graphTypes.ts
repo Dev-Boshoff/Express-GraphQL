@@ -1,5 +1,18 @@
-import { ObjectType, InputType,Field} from "type-graphql";
+import { ObjectType, InputType, Field } from "type-graphql";
+import GraphQLJSON, { GraphQLJSONObject } from 'graphql-type-json';
 
+
+@InputType()
+export class metadataObjectInput {
+  @Field(() => GraphQLJSON)
+  metadata: object
+}
+
+@ObjectType()
+export class metadataObject {
+  @Field(() => GraphQLJSONObject)
+  metadata: object
+}
 
 
 @ObjectType()
@@ -8,11 +21,11 @@ export class rgba {
   r: number
 
   @Field()
-  g:number
+  g: number
 
   @Field()
   b: number
-   
+
   @Field()
   a: number
 }
@@ -24,17 +37,14 @@ export class rgbaInput {
   r: number
 
   @Field()
-  g:number
+  g: number
 
   @Field()
   b: number
-   
+
   @Field()
   a: number
 }
-
-
-
 
 
 @InputType()
@@ -53,7 +63,14 @@ export class SettingsInput {
 
   @Field()
   snappingTolerance: number
+
+  @Field({ nullable: true, defaultValue: 0 })
+  label: string
+
+  @Field({ nullable: true, defaultValue: 0 })
+  labelwidth: number
 }
+
 
 
 @ObjectType()
@@ -72,4 +89,10 @@ export class Settings {
 
   @Field()
   snappingTolerance: number
+
+  @Field({ nullable: true, defaultValue: "" })
+  label: string
+
+  @Field({ nullable: true, defaultValue: 0 })
+  labelwidth: number
 }
