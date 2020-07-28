@@ -211,7 +211,11 @@ export class UserResolvers {
     @Arg('email') email: string,
     @Arg('password') password: string
   ) {
+    const user = await User.findOne({ where: { email } });
 
+    if (user) {
+      throw new Error('User already exists');
+    }
     const hashedPassword = await hash(password, 12);
     try {
       await User.insert({
